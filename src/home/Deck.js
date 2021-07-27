@@ -1,24 +1,37 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { deleteDeck } from "../utils/api";
 
 
-function Deck() {
+function Deck({deck}) {
+  const history = useHistory();
+  const handleDelete = async() =>{
+    const result = window.confirm("Delete this Deck?")
+    if(result){
+      await deleteDeck(deck.id);
+      window.location.reload()
+    }
+  }
+  console.log(deck)
   return (
-    <div class="card w-75">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
+    <div className="card w-75">
+      <div className="card-body">
+        <div className="d-flex flex-row justify-content-between">
+          <h5 className="card-title">{deck.name}</h5>
+          <p className="text-secondary">{deck.cards.length} cards</p>
+        </div>
+        <p className="card-text">
+          {deck.description}
         </p>
-        <a  href="#" class="btn btn-secondary">
-          Button
-        </a>
-        <a href="#" class="btn btn-primary">
-          Button
-        </a>
-        <a href="#" class="btn btn-danger">
-          Button
-        </a>
+        <button onClick={() => history.push(`/decks/${deck.id}`)}  className="mr-2 btn btn-secondary">
+          View
+        </button>
+        <button onClick={() => history.push(`/decks/${deck.id}/study`)} className="btn btn-primary">
+          Study
+        </button>
+        <button onClick={handleDelete} className="float-right btn btn-danger">
+          Delete
+        </button>
       </div>
     </div>
   );
