@@ -1,22 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { useHistory } from "react-router";
-import { listDecks } from "../utils/api";
 import Deck from "./Deck";
 
 
-function DeckList() {
-  const [decks, setDecks] = useState([]);
-  const [error, setError] = useState(undefined)
+function DeckList({decks}) {
   const history = useHistory();
-
-  useEffect(()=> {
-    const abortController = new AbortController();
-
-    listDecks(abortController.signal).then(setDecks).catch(setError);
-
-    return () => abortController.abort();
-  }, []);
-
   const deckList = decks.map(deck => <Deck key={deck.id} deck={deck}/>)
 
   return (
