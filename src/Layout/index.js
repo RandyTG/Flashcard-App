@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import { Route, Switch } from "react-router-dom";
+import { listDecks } from "../utils/api";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "../home/DeckList";
-import { listDecks } from "../utils/api";
+import StudyDeck from "../study/StudyDeck";
+
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -24,6 +26,9 @@ function Layout() {
         <Switch>
           <Route exact path="/">
             <DeckList decks={decks} />
+          </Route>
+          <Route path="/decks/:deckId/study">
+            <StudyDeck />
           </Route>
           <Route path="*">
             <NotFound />
