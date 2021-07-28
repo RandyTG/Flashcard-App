@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "../home/DeckList";
 import StudyDeck from "../study/StudyDeck";
-
+import CreateNewDeck from "../create/CreateNewDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
-  const [error, setError] = useState(undefined)
+  const [error, setError] = useState(undefined);
 
-  useEffect(()=> {
+  useEffect(() => {
     const abortController = new AbortController();
 
     listDecks(abortController.signal).then(setDecks).catch(setError);
@@ -26,6 +26,9 @@ function Layout() {
         <Switch>
           <Route exact path="/">
             <DeckList decks={decks} />
+          </Route>
+          <Route path="/decks/new">
+            <CreateNewDeck decks={decks} />
           </Route>
           <Route path="/decks/:deckId/study">
             <StudyDeck />
