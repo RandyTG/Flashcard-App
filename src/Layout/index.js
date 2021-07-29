@@ -7,7 +7,7 @@ import DeckList from "../home/DeckList";
 import StudyDeck from "../study/StudyDeck";
 import CreateNewDeck from "../create/CreateNewDeck";
 import ViewDeck from "../view_deck/ViewDeck";
-import EditDeck from "../edit_deck/EditDeck";
+import EditDeck from "../edit/EditDeck";
 
 function Layout() {
   const [deck, setDeck] = useState([]);
