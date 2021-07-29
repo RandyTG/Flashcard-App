@@ -6,8 +6,10 @@ import NotFound from "./NotFound";
 import DeckList from "../home/DeckList";
 import StudyDeck from "../study/StudyDeck";
 import CreateNewDeck from "../create/CreateNewDeck";
+import ViewDeck from "../view_deck/ViewDeck";
 
 function Layout() {
+  const [deck, setDeck] = useState([]);
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
 
@@ -31,7 +33,10 @@ function Layout() {
             <CreateNewDeck decks={decks} />
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyDeck />
+            <StudyDeck setError={setError} />
+          </Route>
+          <Route path="/decks/:deckId">
+            <ViewDeck />
           </Route>
           <Route path="*">
             <NotFound />

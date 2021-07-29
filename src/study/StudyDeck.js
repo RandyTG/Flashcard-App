@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Card from "./Card";
 
-function StudyDeck(setError) {
+function StudyDeck({ setError }) {
   const [deck, setDeck] = useState([]);
   const [card, setCard] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
