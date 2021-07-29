@@ -23,7 +23,6 @@ function StudyDeck({ setError }) {
   useEffect(() => {
     const abortController = new AbortController();
     if (Object.keys(deck).length && cards.length > 2) {
-      console.log(deck);
       setCard(
         cards.map((card, index) => (
           <Card
