@@ -17,7 +17,7 @@ function CardForm({
             <a href="/">Home</a>
           </li>
           <li className="breadcrumb-item">
-            <a href={`/decks/${deckId}`}>Deck {deck.name}</a>
+            <a href={`/decks/${deckId}`}>{deck.name}</a>
           </li>
           <li className="breadcrumb-item active " aria-current="page">
             {create ? "Add Card" : "Edit Card"}
