@@ -19,11 +19,10 @@ function CreateNewDeck({ decks, create, setCreate }) {
     });
   };
 
-  const handleSumbit = (event) => {
+  const handleSumbit = async (event) => {
     event.preventDefault();
-    createDeck(formData)
-      .then(setFormData({ ...initialFormState }))
-      .then(history.push(`/decks/${decks.length + 1}`));
+    await createDeck(formData).then(setFormData({ ...initialFormState }));
+    history.push(`/decks/${decks.length + 1}`);
   };
 
   return (

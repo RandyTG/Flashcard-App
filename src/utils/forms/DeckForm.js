@@ -30,8 +30,9 @@ function DeckForm({
         <h2>{create ? "Create Deck" : "Edit Deck"}</h2>
         <form onSubmit={handleSumbit}>
           <div className="form-group">
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input
+              required
               name="name"
               type="text"
               className="form-control"
@@ -42,8 +43,9 @@ function DeckForm({
             />
           </div>
           <div className="form-group">
-            <label for="description">Description</label>
+            <label htmlFor="description">Description</label>
             <textarea
+              required
               name="description"
               className="form-control"
               id="description"

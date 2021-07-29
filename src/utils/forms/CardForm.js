@@ -28,8 +28,9 @@ function CardForm({
         <h2>{create ? "Add Card" : "Edit Card"}</h2>
         <form onSubmit={handleSumbit}>
           <div className="form-group">
-            <label for="front">Front</label>
+            <label htmlFor="front">Front</label>
             <textarea
+              required
               name="front"
               className="form-control"
               id="front"
@@ -40,8 +41,9 @@ function CardForm({
             ></textarea>
           </div>
           <div className="form-group">
-            <label for="back">Back</label>
+            <label htmlFor="back">Back</label>
             <textarea
+              required
               name="back"
               className="form-control"
               id="back"
