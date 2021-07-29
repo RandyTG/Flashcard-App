@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
-import { readDeck, updateDeck } from "../utils/api";
+import { readDeck } from "../utils/api";
+import { createCard } from "../utils/api";
 
-function EditDeck({ setError }) {
+function CreateNewCard({ setError }) {
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
   const history = useHistory();
-  const initialFormSate = {
-    name: `${deck.name}`,
-    description: `${deck.description}`,
-  };
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -17,16 +14,22 @@ function EditDeck({ setError }) {
     return () => abortController.abort();
   }, [deckId]);
 
+  const initialFormSate = {
+    front: "",
+    back: "",
+  };
+  const [formData, setFormData] = useState({ ...initialFormSate });
+
   const handleChange = ({ target }) => {
-    setDeck({
-      ...deck,
+    setFormData({
+      ...formData,
       [target.name]: target.value,
     });
   };
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    updateDeck(deck).then(history.push(`/decks/${deckId}`));
+    createCard(deckId, formData).then(setFormData({ ...initialFormSate }));
   };
 
   return (
@@ -40,45 +43,45 @@ function EditDeck({ setError }) {
             <a href={`/decks/${deckId}`}>{deck.name}</a>
           </li>
           <li className="breadcrumb-item active " aria-current="page">
-            Edit Deck
+            Add Card
           </li>
         </ol>
       </nav>
       <div>
-        <h2>Edit Deck</h2>
+        <h2>{deck.name}: Add Card</h2>
         <form onSubmit={handleSumbit}>
           <div className="form-group">
-            <label for="name">Name</label>
-            <input
-              name="name"
-              type="text"
+            <label for="front">Front</label>
+            <textarea
+              name="front"
               className="form-control"
-              id="name"
-              placeholder="Deck Name"
+              id="front"
+              rows="3"
+              placeholder="Front side of card"
               onChange={handleChange}
-              value={initialFormSate.name}
-            />
+              value={formData.front}
+            ></textarea>
           </div>
           <div className="form-group">
-            <label for="description">Description</label>
+            <label for="back">Back</label>
             <textarea
-              name="description"
+              name="back"
               className="form-control"
-              id="description"
+              id="back"
               rows="3"
-              placeholder="Brief description of the deck"
+              placeholder="Back side of card"
               onChange={handleChange}
-              value={initialFormSate.description}
+              value={formData.back}
             ></textarea>
           </div>
           <button
             onClick={() => history.push(`/decks/${deckId}`)}
             className="mr-2 btn btn-secondary"
           >
-            Cancel
+            Done
           </button>
           <button type="submit" className="mr-2 btn btn-primary">
-            Submit
+            Save
           </button>
         </form>
       </div>
@@ -86,4 +89,4 @@ function EditDeck({ setError }) {
   );
 }
 
-export default EditDeck;
+export default CreateNewCard;

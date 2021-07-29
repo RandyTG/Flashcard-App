@@ -6,11 +6,11 @@ import NotFound from "./NotFound";
 import DeckList from "../home/DeckList";
 import StudyDeck from "../study/StudyDeck";
 import CreateNewDeck from "../create/CreateNewDeck";
+import CreateNewCard from "../create/CreateNewCard";
 import ViewDeck from "../view_deck/ViewDeck";
 import EditDeck from "../edit/EditDeck";
 
 function Layout() {
-  const [deck, setDeck] = useState([]);
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
 
@@ -32,6 +32,9 @@ function Layout() {
           </Route>
           <Route path="/decks/new">
             <CreateNewDeck decks={decks} />
+          </Route>
+          <Route path="/decks/:deckId/cards/new">
+            <CreateNewCard setError={setError} />
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeck setError={setError} />

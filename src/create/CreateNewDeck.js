@@ -19,7 +19,6 @@ function CreateNewDeck({ decks }) {
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    console.log(formData);
     createDeck(formData)
       .then(setFormData({ ...initialFormSate }))
       .then(history.push(`/decks/${decks.length + 1}`));
