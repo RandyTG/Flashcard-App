@@ -12,7 +12,7 @@ function EditDeck({ setError, create, setCreate }) {
     name: `${deck.name}`,
     description: `${deck.description}`,
   };
-
+  setCreate(false);
   useEffect(() => {
     const abortController = new AbortController();
     readDeck(deckId).then(setDeck).catch(setError);

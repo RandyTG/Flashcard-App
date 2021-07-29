@@ -9,6 +9,7 @@ function EditCard({ setError, create, setCreate }) {
   const [card, setCard] = useState([]);
   const { deckId, cardId } = useParams();
   const history = useHistory();
+  setCreate(false);
 
   useEffect(() => {
     const abortController = new AbortController();

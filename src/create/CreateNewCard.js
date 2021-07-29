@@ -5,11 +5,10 @@ import { createCard } from "../utils/api";
 import CardForm from "../utils/forms/CardForm";
 
 function CreateNewCard({ setError, create, setCreate }) {
-  setCreate(true);
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
   const history = useHistory();
-
+  setCreate(true);
   useEffect(() => {
     const abortController = new AbortController();
     readDeck(deckId).then(setDeck).catch(setError);

@@ -4,13 +4,12 @@ import { createDeck } from "../utils/api";
 import DeckForm from "../utils/forms/DeckForm";
 
 function CreateNewDeck({ decks, create, setCreate }) {
-  setCreate(true);
   const history = useHistory();
   const initialFormState = {
     name: "",
     description: "",
   };
-
+  setCreate(true);
   const [formData, setFormData] = useState({ ...initialFormState });
   const handleChange = ({ target }) => {
     setFormData({
