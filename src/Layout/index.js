@@ -13,6 +13,7 @@ import EditCard from "../edit/EditCard";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
+  const [create, setCreate] = useState(true);
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
@@ -32,16 +33,32 @@ function Layout() {
             <DeckList decks={decks} />
           </Route>
           <Route path="/decks/new">
-            <CreateNewDeck decks={decks} />
+            <CreateNewDeck
+              decks={decks}
+              create={create}
+              setCreate={setCreate}
+            />
           </Route>
           <Route path="/decks/:deckId/cards/new">
-            <CreateNewCard setError={setError} />
+            <CreateNewCard
+              setError={setError}
+              create={create}
+              setCreate={setCreate}
+            />
           </Route>
           <Route path="/decks/:deckId/cards/:cardId/edit">
-            <EditCard setError={setError} />
+            <EditCard
+              setError={setError}
+              create={create}
+              setCreate={setCreate}
+            />
           </Route>
           <Route path="/decks/:deckId/edit">
-            <EditDeck setError={setError} />
+            <EditDeck
+              setError={setError}
+              create={create}
+              setCreate={setCreate}
+            />
           </Route>
           <Route path="/decks/:deckId/study">
             <StudyDeck setError={setError} />
