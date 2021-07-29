@@ -7,6 +7,7 @@ import DeckList from "../home/DeckList";
 import StudyDeck from "../study/StudyDeck";
 import CreateNewDeck from "../create/CreateNewDeck";
 import ViewDeck from "../view_deck/ViewDeck";
+import EditDeck from "../edit_deck/EditDeck";
 
 function Layout() {
   const [deck, setDeck] = useState([]);
@@ -31,6 +32,9 @@ function Layout() {
           </Route>
           <Route path="/decks/new">
             <CreateNewDeck decks={decks} />
+          </Route>
+          <Route path="/decks/:deckId/edit">
+            <EditDeck setError={setError} />
           </Route>
           <Route path="/decks/:deckId/study">
             <StudyDeck setError={setError} />

@@ -1,28 +1,32 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { createDeck } from "../utils/api";
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router";
+import { readDeck, updateDeck } from "../utils/api";
 
-function CreateNewDeck({ decks }) {
+function EditDeck({ setError }) {
+  const [deck, setDeck] = useState([]);
+  const { deckId } = useParams();
   const history = useHistory();
   const initialFormSate = {
-    name: "",
-    description: "",
+    name: `${deck.name}`,
+    description: `${deck.description}`,
   };
 
-  const [formData, setFormData] = useState({ ...initialFormSate });
+  useEffect(() => {
+    const abortController = new AbortController();
+    readDeck(deckId).then(setDeck).catch(setError);
+    return () => abortController.abort();
+  }, [deckId]);
+
   const handleChange = ({ target }) => {
-    setFormData({
-      ...formData,
+    setDeck({
+      ...deck,
       [target.name]: target.value,
     });
   };
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    createDeck(formData)
-      .then(setFormData({ ...initialFormSate }))
-      .then(history.push(`/decks/${decks.length + 1}`));
+    updateDeck(deck).then(history.push(`/decks/${deckId}`));
   };
 
   return (
@@ -32,13 +36,16 @@ function CreateNewDeck({ decks }) {
           <li className="breadcrumb-item">
             <a href="/">Home</a>
           </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Create Deck
+          <li className="breadcrumb-item">
+            <a href="">{deck.name}</a>
+          </li>
+          <li className="breadcrumb-item active " aria-current="page">
+            Edit Deck
           </li>
         </ol>
       </nav>
       <div>
-        <h2>Create Deck</h2>
+        <h2>Edit Deck</h2>
         <form onSubmit={handleSumbit}>
           <div className="form-group">
             <label for="name">Name</label>
@@ -49,7 +56,7 @@ function CreateNewDeck({ decks }) {
               id="name"
               placeholder="Deck Name"
               onChange={handleChange}
-              value={formData.name}
+              value={initialFormSate.name}
             />
           </div>
           <div className="form-group">
@@ -61,11 +68,11 @@ function CreateNewDeck({ decks }) {
               rows="3"
               placeholder="Brief description of the deck"
               onChange={handleChange}
-              value={formData.description}
+              value={initialFormSate.description}
             ></textarea>
           </div>
           <button
-            onClick={() => history.push(`/`)}
+            onClick={() => history.push(`/decks/${deckId}`)}
             className="mr-2 btn btn-secondary"
           >
             Cancel
@@ -78,4 +85,5 @@ function CreateNewDeck({ decks }) {
     </main>
   );
 }
-export default CreateNewDeck;
+
+export default EditDeck;
