@@ -24,8 +24,6 @@ Shows decks that have already been created.
 
 ### Create Deck:
 
-Shows decks that have already been created.
-
 ![Create Deck](screenshots/createDeck.png)
 
 ## Technology
