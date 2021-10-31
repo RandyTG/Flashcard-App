@@ -24,13 +24,13 @@ Shows decks that have already been created.
 
 ### Create Deck:
 
-![Create Deck](screenshots/viewDeck.png)
+![Create Deck](screenshots/createDeck.png)
 
 ### View Deck:
 
 Shows all of the cards associated to that specific deck as well as deck and card management functionality.
 
-![View Deck](screenshots/createDeck.png)
+![View Deck](screenshots/viewDeck.png)
 
 ### Edit Deck:
 
