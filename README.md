@@ -5,7 +5,6 @@ Flashcard App is for users that wish to create flashcard decks to review any top
 ## Links
 
 * [App Demo]()
-* [Api comming soon]()
 
 ## Installation
 
