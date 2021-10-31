@@ -24,7 +24,35 @@ Shows decks that have already been created.
 
 ### Create Deck:
 
-![Create Deck](screenshots/createDeck.png)
+![Create Deck](screenshots/viewDeck.png)
+
+### View Deck:
+
+Shows all of the cards associated to that specific deck as well as deck and card management functionality.
+
+![View Deck](screenshots/createDeck.png)
+
+### Edit Deck:
+
+![Edit Deck](screenshots/editDeck.png)
+
+### Add Card:
+
+![Add Card](screenshots/addCard.png)
+
+### Edit Card:
+
+![Edit Card](screenshots/editCard.png)
+
+### Study Card:
+
+Front side of card
+
+![Card Front](screenshots/studyDeckCardFront.png)
+
+Flipping card shows the back of card as well as next button to continue to next card
+
+![Card Back](screenshots/studyDeckCardBack.png)
 
 ## Technology
 
@@ -34,6 +62,3 @@ Shows decks that have already been created.
 
 ### API interface:
 * An API server, powered by [json-server](https://www.npmjs.com/package/json-server), running on http://localhost:5000
-
-
-
