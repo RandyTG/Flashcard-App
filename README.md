@@ -11,7 +11,7 @@ Flashcard App is for users that wish to create flashcard decks to review any top
 1. Run `npm install` to install project dependencies.
 1. Run `npm run start` to start project
 
-The deafult URL locations will be http://localhost:3000.
+The deafult URL locations will be http://localhost:3000
 
 ## Screenshots
 
