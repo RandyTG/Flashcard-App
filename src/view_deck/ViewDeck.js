@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { readDeck } from "../utils/api";
 import DeckButtons from "./DeckButtons";
 import CardsInDeck from "./CardsInDeck";
@@ -9,7 +9,7 @@ function ViewDeck({ setError }) {
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
   const { cards } = deck;
-  let navigate = useNavigate();
+  const history = useHistory();
 
   //fetches current deck
   useEffect(() => {
@@ -27,7 +27,7 @@ function ViewDeck({ setError }) {
             key={card.id}
             card={card}
             deckId={deckId}
-            navigate={navigate}
+            history={history}
           />
         ))
       );
@@ -50,7 +50,7 @@ function ViewDeck({ setError }) {
       <div>
         <h4>{deck.name}</h4>
         <p>{deck.description}</p>
-        <DeckButtons deckId={deckId} nvigate={navigate} />
+        <DeckButtons deckId={deckId} history={history} />
       </div>
       <br />
       <div>

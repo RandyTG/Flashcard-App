@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import Header from "./Header";
 import NotFound from "./NotFound";
@@ -28,40 +28,48 @@ function Layout() {
     <>
       <Header />
       <div className="container">
-        <Routes>
-          <Route path="/" element={<DeckList decks={decks} />} />
-          <Route path="/decks/new" element={
+        <Switch>
+          <Route exact path="/">
+            <DeckList decks={decks} />
+          </Route>
+          <Route path="/decks/new">
             <CreateNewDeck
               decks={decks}
               create={create}
               setCreate={setCreate}
             />
-          }/>
-          <Route path="/decks/:deckId/cards/new" element={
+          </Route>
+          <Route path="/decks/:deckId/cards/new">
             <CreateNewCard
               setError={setError}
               create={create}
               setCreate={setCreate}
             />
-          }/>
-          <Route path="/decks/:deckId/cards/:cardId/edit" element={
+          </Route>
+          <Route path="/decks/:deckId/cards/:cardId/edit">
             <EditCard
               setError={setError}
               create={create}
               setCreate={setCreate}
             />
-          }/>
-          <Route path="/decks/:deckId/edit" element={
+          </Route>
+          <Route path="/decks/:deckId/edit">
             <EditDeck
               setError={setError}
               create={create}
               setCreate={setCreate}
             />
-          }/>
-          <Route path="/decks/:deckId/study" element={<StudyDeck setError={setError} />} />
-          <Route path="/decks/:deckId" element={<ViewDeck />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Route>
+          <Route path="/decks/:deckId/study">
+            <StudyDeck setError={setError} />
+          </Route>
+          <Route path="/decks/:deckId">
+            <ViewDeck />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
     </>
   );

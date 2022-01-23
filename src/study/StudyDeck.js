@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Card from "./Card";
 
@@ -10,7 +10,7 @@ function StudyDeck({ setError }) {
   const [flip, setFlip] = useState(false);
   const { deckId } = useParams();
   const { cards } = deck;
-  let navigate = useNavigate();
+  const history = useHistory();
 
   //fetches current deck
   useEffect(() => {
@@ -46,7 +46,7 @@ function StudyDeck({ setError }) {
             in this deck.
           </p>
           <button
-            onClick={() => navigate(`/decks/${deckId}/cards/new`)}
+            onClick={() => history.push(`/decks/${deckId}/cards/new`)}
             className="mr-2 btn btn-primary"
           >
             Add Cards

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { readDeck } from "../utils/api";
 import { createCard } from "../utils/api";
 import CardForm from "../utils/forms/CardForm";
@@ -7,7 +7,7 @@ import CardForm from "../utils/forms/CardForm";
 function CreateNewCard({ setError, create, setCreate }) {
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
-  let navigate = useNavigate();
+  const history = useHistory();
   setCreate(true);
   useEffect(() => {
     const abortController = new AbortController();
@@ -40,7 +40,7 @@ function CreateNewCard({ setError, create, setCreate }) {
       handleSumbit={handleSumbit}
       handleChange={handleChange}
       deck={deck}
-      navigate={navigate}
+      history={history}
       initialFormState={formData}
     />
   );

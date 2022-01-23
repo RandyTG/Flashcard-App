@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { readDeck, updateDeck } from "../utils/api";
 import DeckForm from "../utils/forms/DeckForm";
 
@@ -7,7 +7,7 @@ function EditDeck({ setError, create, setCreate }) {
   setCreate(false);
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
-  let navigate = useNavigate();
+  const history = useHistory();
   const initialFormSate = {
     name: `${deck.name}`,
     description: `${deck.description}`,
@@ -28,7 +28,7 @@ function EditDeck({ setError, create, setCreate }) {
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    updateDeck(deck).then(navigate(`/decks/${deckId}`));
+    updateDeck(deck).then(history.push(`/decks/${deckId}`));
   };
 
   return (
@@ -37,7 +37,7 @@ function EditDeck({ setError, create, setCreate }) {
       create={create}
       handleSumbit={handleSumbit}
       handleChange={handleChange}
-      navigate={navigate}
+      history={history}
       initialFormState={deck}
       deck={deck}
     />

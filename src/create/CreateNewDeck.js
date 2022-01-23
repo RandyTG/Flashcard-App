@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
 import DeckForm from "../utils/forms/DeckForm";
 
 function CreateNewDeck({ decks, create, setCreate }) {
-  let navigate = useNavigate();
+  const history = useHistory();
   const initialFormState = {
     name: "",
     description: "",
@@ -21,7 +21,7 @@ function CreateNewDeck({ decks, create, setCreate }) {
   const handleSumbit = async (event) => {
     event.preventDefault();
     await createDeck(formData).then(setFormData({ ...initialFormState }));
-    navigate(`/decks/${decks.length + 1}`);
+    history.push(`/decks/${decks.length + 1}`);
   };
 
   return (
@@ -29,7 +29,7 @@ function CreateNewDeck({ decks, create, setCreate }) {
       create={create}
       handleSumbit={handleSumbit}
       handleChange={handleChange}
-      navigate={navigate}
+      history={history}
       initialFormState={formData}
     />
   );
