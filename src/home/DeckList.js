@@ -1,15 +1,15 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import Deck from "./Deck";
 
 function DeckList({ decks }) {
-  const history = useHistory();
+  let navigate = useNavigate();
   const deckList = decks.map((deck) => <Deck key={deck.id} deck={deck} />);
 
   return (
     <div>
       <button
-        onClick={() => history.push("/decks/new")}
+        onClick={() => navigate("/decks/new")}
         type="button"
         className="mb-2 btn btn-secondary"
       >
