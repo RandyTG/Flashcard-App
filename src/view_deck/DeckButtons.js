@@ -1,32 +1,32 @@
 import React from "react";
 import { deleteDeck } from "../utils/api";
 
-function DeckButtons({ deckId, history }) {
+function DeckButtons({ deckId, navigate }) {
   //handles delete button click
   const handleDelete = async () => {
     const result = window.confirm("Delete this Deck?");
     if (result) {
       await deleteDeck(deckId);
-      history.push("/");
+      navigate("/");
     }
   };
 
   return (
     <div>
       <button
-        onClick={() => history.push(`/decks/${deckId}/edit`)}
+        onClick={() => navigate(`/decks/${deckId}/edit`)}
         className="mr-2 btn btn-secondary"
       >
         Edit
       </button>
       <button
-        onClick={() => history.push(`/decks/${deckId}/study`)}
+        onClick={() => navigate(`/decks/${deckId}/study`)}
         className="mr-2 btn btn-primary"
       >
         Study
       </button>
       <button
-        onClick={() => history.push(`/decks/${deckId}/cards/new`)}
+        onClick={() => navigate(`/decks/${deckId}/cards/new`)}
         className="btn btn-primary"
       >
         Add Cards

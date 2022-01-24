@@ -6,7 +6,7 @@ function DeckForm({
   handleSumbit,
   handleChange,
   initialFormState,
-  history,
+  navigate,
   deck,
 }) {
   return (
@@ -57,7 +57,7 @@ function DeckForm({
           </div>
           <button
             onClick={() =>
-              create ? history.push(`/`) : history.push(`/decks/${deckId}`)
+              create ? navigate(`/`) : navigate(`/decks/${deckId}`)
             }
             className="mr-2 btn btn-secondary"
           >

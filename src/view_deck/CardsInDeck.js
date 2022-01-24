@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteCard } from "../utils/api";
 
-function CardsInDeck({ card, history, deckId }) {
+function CardsInDeck({ card, navigate, deckId }) {
   const handleDelete = async () => {
     const result = window.confirm("Delete this Card?");
     if (result) {
@@ -20,7 +20,7 @@ function CardsInDeck({ card, history, deckId }) {
         <div className="d-flex flex-row justify-content-end">
           <button
             onClick={() =>
-              history.push(`/decks/${deckId}/cards/${card.id}/edit`)
+              navigate(`/decks/${deckId}/cards/${card.id}/edit`)
             }
             className="mr-2 btn btn-secondary"
           >

@@ -6,7 +6,7 @@ function CardForm({
   handleSumbit,
   handleChange,
   deck,
-  history,
+  navigate,
   initialFormState,
 }) {
   return (
@@ -54,7 +54,7 @@ function CardForm({
             ></textarea>
           </div>
           <button
-            onClick={() => history.push(`/decks/${deckId}`)}
+            onClick={() => navigate(`/decks/${deckId}`)}
             className="mr-2 btn btn-secondary"
           >
             {create ? "Done" : "Cancel"}

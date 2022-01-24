@@ -50,7 +50,7 @@ function ViewDeck({ setError }) {
       <div>
         <h4>{deck.name}</h4>
         <p>{deck.description}</p>
-        <DeckButtons deckId={deckId} nvigate={navigate} />
+        <DeckButtons deckId={deckId} navigate={navigate} />
       </div>
       <br />
       <div>
