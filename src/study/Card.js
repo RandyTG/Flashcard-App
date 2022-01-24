@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Card({
   cards,
@@ -10,7 +10,7 @@ function Card({
   setFlip,
   currentCard,
 }) {
-  let navigate = useNavigate();
+  const history = useHistory();
   const handleFlip = () => setFlip(!flip);
   const handleNext = () => {
     setFlip(false);
@@ -20,7 +20,7 @@ function Card({
       if (result) {
         window.location.reload();
       } else {
-        navigate("/");
+        history.push("/");
       }
     }
   };

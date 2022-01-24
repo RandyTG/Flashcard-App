@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useHistory } from "react-router";
 import { deleteDeck } from "../utils/api";
 
 function Deck({ deck }) {
-  let navigate = useNavigate();
+  const history = useHistory();
   //handles delete button click
   const handleDelete = async () => {
     const result = window.confirm("Delete this Deck?");
@@ -22,13 +22,13 @@ function Deck({ deck }) {
         </div>
         <p className="card-text">{deck.description}</p>
         <button
-          onClick={() => navigate(`/decks/${deck.id}`)}
+          onClick={() => history.push(`/decks/${deck.id}`)}
           className="mr-2 btn btn-secondary"
         >
           View
         </button>
         <button
-          onClick={() => navigate(`/decks/${deck.id}/study`)}
+          onClick={() => history.push(`/decks/${deck.id}/study`)}
           className="btn btn-primary"
         >
           Study

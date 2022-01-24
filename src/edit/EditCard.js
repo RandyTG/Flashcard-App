@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { readDeck, updateCard, readCard } from "../utils/api";
 import CardForm from "../utils/forms/CardForm";
 
@@ -8,7 +8,7 @@ function EditCard({ setError, create, setCreate }) {
   const [deck, setDeck] = useState([]);
   const [card, setCard] = useState([]);
   const { deckId, cardId } = useParams();
-  let navigate = useNavigate();
+  const history = useHistory();
   setCreate(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function EditCard({ setError, create, setCreate }) {
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    updateCard(card).then(navigate(`/decks/${deckId}`));
+    updateCard(card).then(history.push(`/decks/${deckId}`));
   };
 
   return (
@@ -42,7 +42,7 @@ function EditCard({ setError, create, setCreate }) {
       handleSumbit={handleSumbit}
       handleChange={handleChange}
       deck={deck}
-      navigate={navigate}
+      history={history}
       initialFormState={card}
     />
   );
