@@ -14,7 +14,7 @@ function Deck({ deck }) {
   };
   //returns completed card
   return (
-    <div className="card w-75 mb-2 me-lg-1">
+    <div className="col-11 col-lg-4 card mb-1">
       <div className="card-body">
         <div className="d-flex flex-row justify-content-between">
           <h5 className="card-title">{deck.name}</h5>

@@ -17,7 +17,7 @@ function DeckList({ decks }) {
           Create Deck
         </button>
       </div>
-      <section className="d-flex flex-column align-items-center flex-lg-row align-items-lg-stretch">
+      <section className="row d-flex flex-column align-items-center flex-lg-row align-items-lg-stretch flex-lg-wrap">
         {deckList}
       </section>
     </div>
