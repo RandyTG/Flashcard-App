@@ -8,14 +8,18 @@ function DeckList({ decks }) {
 
   return (
     <div>
-      <button
-        onClick={() => navigate("/decks/new")}
-        type="button"
-        className="mb-2 btn btn-secondary"
-      >
-        Create Deck
-      </button>
-      <section className="d-flex flex-column flex-lg-row">{deckList}</section>
+      <div className="d-flex justify-content-center">
+        <button
+          onClick={() => navigate("/decks/new")}
+          type="button"
+          className="mb-2 btn btn-secondary btn-lg"
+        >
+          Create Deck
+        </button>
+      </div>
+      <section className="d-flex flex-column align-items-center flex-lg-row align-items-lg-stretch">
+        {deckList}
+      </section>
     </div>
   );
 }
