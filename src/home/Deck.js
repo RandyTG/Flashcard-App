@@ -14,14 +14,17 @@ function Deck({ deck }) {
   };
   //returns completed card
   return (
-    <div className="col-11 col-lg-4 card mb-1">
-      <div className="card-body">
-        <div className="d-flex flex-row justify-content-between">
+    <div className="border border-danger col-11 col-lg-4 card mb-1">
+      <div className="card-body d-flex flex-column justify-content-between">
+        <div className="mb-1">
+          <div className="d-flex flex-row justify-content-between">
           <h5 className="card-title">{deck.name}</h5>
           <p className="text-secondary">{deck.cards.length} cards</p>
         </div>
         <p className="card-text">{deck.description}</p>
-        <button
+        </div>
+        <div>
+          <button
           onClick={() => navigate(`/decks/${deck.id}`)}
           className="mr-2 btn btn-secondary"
         >
@@ -36,6 +39,7 @@ function Deck({ deck }) {
         <button onClick={handleDelete} className="float-right btn btn-danger">
           Delete
         </button>
+        </div>
       </div>
     </div>
   );

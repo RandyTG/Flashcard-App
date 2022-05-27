@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import "./home.css"
 import Deck from "./Deck";
 
 function DeckList({ decks }) {
   let navigate = useNavigate();
   const deckList = decks.map((deck) => <Deck key={deck.id} deck={deck} />);
 
+  //remover border here \/
   return (
-    <div>
+    <div className="border border-danger">
       <div className="d-flex justify-content-center">
         <button
           onClick={() => navigate("/decks/new")}
