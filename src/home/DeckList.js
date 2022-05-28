@@ -9,7 +9,7 @@ function DeckList({ decks }) {
 
   //remover border here \/
   return (
-    <div className="border border-danger">
+    <div>
       <div className="d-flex justify-content-center">
         <button
           onClick={() => navigate("/decks/new")}
