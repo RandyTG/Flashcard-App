@@ -55,7 +55,10 @@ function ViewDeck({ setError }) {
       <br />
       <div>
         <h2>Cards</h2>
-        {card}
+        <section className="row">
+          {card}
+        </section>
+        
       </div>
     </main>
   );

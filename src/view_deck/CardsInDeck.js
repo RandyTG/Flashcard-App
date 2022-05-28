@@ -11,13 +11,20 @@ function CardsInDeck({ card, navigate, deckId }) {
   };
 
   return (
-    <div className="card w-77">
+    <div className="col-lg-4  mb-1">
+      <div className="card d-flex bg-secondary ">
       <div className="card-body">
-        <div className="d-flex flex-row justify-content-between">
-          <p className="card-text">{card.front}</p>
-          <p className="card-text">{card.back}</p>
+        <div className="d-flex flex-column justify-content-between">
+          <p className="card-text">
+            Front <br></br>
+            {card.front}
+          </p>
+          <p className="card-text">
+            Back <br></br>
+            {card.back}
+          </p>
         </div>
-        <div className="d-flex flex-row justify-content-end">
+        <div className="mt-1 d-flex flex-row justify-content-center justify-content-lg-end">
           <button
             onClick={() =>
               navigate(`/decks/${deckId}/cards/${card.id}/edit`)
@@ -32,6 +39,8 @@ function CardsInDeck({ card, navigate, deckId }) {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 
